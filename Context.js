@@ -12,9 +12,22 @@ function pixSomContextProvider({children}){
     .then(res => res.json())
     .then(data => setAllPhotos(data))
   },[])
-  
+
+  const toggleFav = (id) => {
+    const updatedPhoto = allPhotos.map(e=>{
+      if(e.id === id){
+        return {...e,isFavorite:!e.isFavorite}
+      }else{
+        return e
+      }
+     
+  })
+  console.log(allPhotos[id].isFavorite)
+  setAllPhotos(updatedPhoto)
+  } 
+  // console.log(allPhotos)
   return (
-    <pixSomContext.Provider value={{allPhotos}}>
+    <pixSomContext.Provider value={{allPhotos, toggleFav}}>
       {children}
     </pixSomContext.Provider>
   )

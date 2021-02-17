@@ -7,7 +7,7 @@ function Photos() {
     const ctx = useContext(pixSomContext);
     const {allPhotos} = ctx;
     const imageDisplay = allPhotos.map((photo, idx)=>{
-        return <Image key={idx} src={photo.url} className={getClass(idx)}/>
+        return <Image key={idx} photo={photo} photoId={photo.id} className={getClass(idx)}/>
     })
     return (
         <main className="photos">
